@@ -1,8 +1,6 @@
 /* Section_02.cpp : Defines the entry point for the console application.
 
 */
-
-#include "stdafx.h"
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
@@ -27,16 +25,15 @@ int main()
 		PrintIntro();
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();
-	} 
+	}
 	while (bPlayAgain);
 	return 0;
 }
 
 void PrintIntro()
 {
-	constexpr int32 WORD_LENGTH = 5;
 	std::cout << "Welcome to Bulls & Cows, a fun word game.\n";
-	std::cout << "Can you guess the " << WORD_LENGTH;
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n\n";
 	return;
 }

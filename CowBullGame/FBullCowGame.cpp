@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "FBullCowGame.h"
 #include <iostream>
 
@@ -9,11 +8,12 @@ FBullCowGame::FBullCowGame()
 	Reset();
 }
 
-// Getter methods
+// Getter Methods
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
+int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length; }
 
-// Class Methods
+// Other Class Methods
 
 void FBullCowGame::Reset()
 {
@@ -33,7 +33,7 @@ bool FBullCowGame::IsGameWon() const
 	return false;
 }
 
-bool FBullCowGame::CheckGuessValidity(FString)
+bool FBullCowGame::CheckGuessValidity(FString) const
 {
 
 	return false;
@@ -68,17 +68,16 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 					BullCowCount.Bulls++;
 				}
 				// Else
-				else 
-				{					
+				else
+				{
 					//Increment Cows
 					BullCowCount.Cows++;
 				}
-				
-				
+
+
 			}
 		}
 	}
 	// Compare letters against hidden word
 	return BullCowCount;
 }
-
