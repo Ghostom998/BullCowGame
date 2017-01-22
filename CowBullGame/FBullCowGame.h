@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include <string>
 
 using FString = std::string;
@@ -11,6 +12,15 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
+enum class EGuessStatus
+{
+	Invalid_status,
+	OK,
+	Not_Isogram,
+	Not_Lowercase,
+	Wrong_Length
+};
+
 class FBullCowGame
 {
 public:
@@ -21,18 +31,20 @@ public:
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
 	bool IsGameWon() const;
-	bool CheckGuessValidity(FString) const;
+	EGuessStatus CheckGuessValidity(FString) const;
 
 	void Reset();
 
-
 	// Counts bulls and cows and increase try # assuming a valid guess
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 private:
 	// See constructor for initialisation
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
+	bool bGameIsWon;
 
+	bool bIsIsogram(FString) const;
+	bool bIsLowerCase(FString) const;
 };
