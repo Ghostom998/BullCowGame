@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "FBullCowGame.h"
 #include <string>
@@ -7,25 +8,31 @@
 
 using int32 = int;
 
-FBullCowGame::FBullCowGame() // Class Constructor
+FBullCowGame::FBullCowGame() // Default Constructor
 {
 	Reset();
 }
 
 // Getter Methods
-int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
+
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 // Functional Class Methods
 
+int32 FBullCowGame::GetMaxTries() const 
+{ 
+	TMap<int32, int32> WordLengthToMaxTries{ {3,4},{4,7},{5,10},{6,15},{7,20} };
+	return WordLengthToMaxTries[MyHiddenWord.length()]; 
+}
+
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 5; // Declared constant once to enable easier searching
 	MyMaxTries = MAX_TRIES;
 
-	const FString HIDDEN_WORD = "planet";
+	const FString HIDDEN_WORD = "cat";
 	MyHiddenWord = HIDDEN_WORD;
 	bGameIsWon = false;
 
@@ -39,7 +46,6 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	{
 		return EGuessStatus::Not_Isogram; // flag not an isogram
 	}
-	
 	else if (!bIsLowerCase(Guess)) // if guess is not all lower case
 	{
 		return EGuessStatus::Not_Lowercase; // flag not lowercase

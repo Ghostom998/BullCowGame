@@ -1,6 +1,7 @@
 /* Section_02.cpp : Defines the entry point for the console application.
 
 */
+#pragma once
 #include "stdafx.h"
 #include <iostream>
 #include <string>
@@ -33,7 +34,14 @@ int main()
 
 void PrintIntro()
 {
-	std::cout << "Welcome to Bulls & Cows, a fun word game.\n";
+	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+	std::cout << std::endl;
+	std::cout << "          }   {         ___ " << std::endl;
+	std::cout << "          (o o)        (o o) " << std::endl;
+	std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+	std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+	std::cout << " *  |-,--- |              |------|  * " << std::endl;
+	std::cout << "    ^      ^              ^      ^ " << std::endl;
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
 	std::cout << " letter isogram I'm thinking of?\n\n";
 	return;
@@ -71,7 +79,7 @@ FText GetValidGuess()
 	do {
 		// Get a guess from the player
 		int32 CurrentTry = BCGame.GetCurrentTry();
-		std::cout << "Try " << CurrentTry;
+		std::cout << "Try " << CurrentTry << " of " << BCGame.GetMaxTries();
 		std::cout << ". Guess a word: ";
 		
 		getline(std::cin, Guess);
