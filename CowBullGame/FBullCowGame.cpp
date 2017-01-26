@@ -30,9 +30,9 @@ int32 FBullCowGame::GetMaxTries() const
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 5; // Declared constant once to enable easier searching
-	MyMaxTries = MAX_TRIES;
+	MyMaxTries = MAX_TRIES;        // TODO Change this to read from WordLengthToMaxTries method above
 
-	const FString HIDDEN_WORD = "cat";
+	const FString HIDDEN_WORD = "planet"; // TODO generate random word from an array
 	MyHiddenWord = HIDDEN_WORD;
 	bGameIsWon = false;
 
@@ -98,8 +98,8 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 
 bool FBullCowGame::bIsIsogram(FString Word) const
 {
-	if (Word.length() <= 1) { return true; } // sorter considers 0 and 1 letter words to be isograms as the letters obviosuly do not repeat and instead a more meaningful error is given (see CheckGuessValidity() )
-
+	if (Word.length() <= 1) { return true; } // sorter considers 0 and 1 letter words to be isograms as the letters 
+						 // obviosuly do not repeat and instead a more meaningful error is given (see CheckGuessValidity() )
 	TMap<char, bool> LetterSeen; // Setup map
 	for (auto Letter : Word)	// For all letters of the word
 	{
@@ -112,8 +112,8 @@ bool FBullCowGame::bIsIsogram(FString Word) const
 
 bool FBullCowGame::bIsLowerCase(FString Word) const
 {
-	for (auto Letter : Word)	// For all letters of the word
+	for (auto Letter : Word)      // For all letters of the word
 		if (!islower(Letter)) { return false; } // If not a lowercase letter then return FALSE, not a lower case letter
-		else { return true; } // Otherwise returns TRUE, assumes value must be a lowercase letter
+		else { return true; } // Otherwise returns TRUE, assumes word must be all lowercase letters
 }
 
