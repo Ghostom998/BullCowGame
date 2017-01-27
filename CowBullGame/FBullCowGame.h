@@ -30,6 +30,7 @@ public:
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
+	FString GetHiddenWord() const;
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString) const;
 
