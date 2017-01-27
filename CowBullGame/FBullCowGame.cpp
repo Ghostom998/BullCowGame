@@ -118,15 +118,15 @@ bool FBullCowGame::bIsLowerCase(FString Word) const
 
 FString FBullCowGame::GetHiddenWord() const
 {
-	std::string HiddenWord[] = { "bird" , "fake" , "frog" , "jump" , "shop" , "bike" , "mask" , "open" , "best" , "bank" , "nail" , "cafe" , "wide" , "star" , "game" , // total = 15
-		"code" , "boat" , "join" , "view" , "bang" , "dirty" , "chair" , "coral" , "money" , "heart" , "value" , "pound" , "store" , "house" , "pasty" , "party" , "dream" , // total = 17+15 = 32
-		"craft" , "sound" , "boxer" , "junky" , "cigar" , "swear" , "vault" , "after" , "forest" , "ageing" , "bounce" , "donkey" , "planet" , "crusty" , "gamble" , "bucket" , // total = 16+32 = 48
-		"tailor" , "castle" , "market" , "retail" , "toilet" , "chunky" , "switch" , "fabric" , "jumble" , "jacked" , "quiche" , "plaque" , "hangers" , "jukebox" , "mugshot" , // total = 48+15 = 63
-		"parcels" , "subject" , "qualify" , "equably" , "curtain" , "outpace" , "society" , "travel" , "squeaky" , "jerking" , "jumping" , "closure" , "jackets" ,  // total = 14+63 = 77
-		"squelch" , "zombies" , "planted" };																														// total = 3+77 = 80
+	std::string HiddenWord[] = { "bird" , "fake" , "frog" , "jump" , "shop" , "bike" , "mask" , "open" , "best" , "bank" , "nail" , "cafe" , "wide" , "star" , "game" , 
+		"code" , "boat" , "join" , "view" , "bang" , "dirty" , "chair" , "coral" , "money" , "heart" , "value" , "pound" , "store" , "house" , "pasty" , "party" , "dream" , 
+		"craft" , "sound" , "boxer" , "junky" , "cigar" , "swear" , "vault" , "after" , "forest" , "bounce" , "donkey" , "planet" , "crusty" , "gamble" , "bucket" ,
+		"tailor" , "castle" , "market" , "retail" , "chunky" , "switch" , "fabric" , "jumble" , "jacked" , "quiche" , "plaque" , "hangers" , "jukebox" , "mugshot" , 
+		"parcels" , "subject" , "qualify" , "equably" , "curtain" , "outpace" , "society" , "travel" , "squeaky" , "jerking" , "jumping" , "closure" , "jackets" ,  
+		"squelch" , "zombies" , "planted" };
 
 	srand(time(0));
 
-	return HiddenWord[rand() % 79];
+	return HiddenWord[rand() % 77];
 }
 
