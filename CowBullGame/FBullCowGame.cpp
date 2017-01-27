@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include<ctime>
 #define TMap std::map
 
 using int32 = int;
@@ -29,11 +30,9 @@ int32 FBullCowGame::GetMaxTries() const
 
 void FBullCowGame::Reset()
 {
-	constexpr int32 MAX_TRIES = 5; // Declared constant once to enable easier searching
-	MyMaxTries = MAX_TRIES;        // TODO Change this to read from WordLengthToMaxTries method above
+	MyMaxTries = GetMaxTries();
 
-	const FString HIDDEN_WORD = "planet"; // TODO generate random word from an array
-	MyHiddenWord = HIDDEN_WORD;
+	MyHiddenWord = GetHiddenWord();
 	bGameIsWon = false;
 
 	MyCurrentTry = 1;
@@ -115,5 +114,19 @@ bool FBullCowGame::bIsLowerCase(FString Word) const
 	for (auto Letter : Word)      // For all letters of the word
 		if (!islower(Letter)) { return false; } // If not a lowercase letter then return FALSE, not a lower case letter
 		else { return true; } // Otherwise returns TRUE, assumes word must be all lowercase letters
+}
+
+FString FBullCowGame::GetHiddenWord() const
+{
+	std::string HiddenWord[] = { "bird" , "fake" , "frog" , "jump" , "shop" , "bike" , "mask" , "open" , "best" , "bank" , "nail" , "cafe" , "wide" , "star" , "game" , // total = 15
+		"code" , "boat" , "join" , "view" , "bang" , "dirty" , "chair" , "coral" , "money" , "heart" , "value" , "pound" , "store" , "house" , "pasty" , "party" , "dream" , // total = 17+15 = 32
+		"craft" , "sound" , "boxer" , "junky" , "cigar" , "swear" , "vault" , "after" , "forest" , "ageing" , "bounce" , "donkey" , "planet" , "crusty" , "gamble" , "bucket" , // total = 16+32 = 48
+		"tailor" , "castle" , "market" , "retail" , "toilet" , "chunky" , "switch" , "fabric" , "jumble" , "jacked" , "quiche" , "plaque" , "hangers" , "jukebox" , "mugshot" , // total = 48+15 = 63
+		"parcels" , "subject" , "qualify" , "equably" , "curtain" , "outpace" , "society" , "travel" , "squeaky" , "jerking" , "jumping" , "closure" , "jackets" ,  // total = 14+63 = 77
+		"squelch" , "zombies" , "planted" };																														// total = 3+77 = 80
+
+	srand(time(0));
+
+	return HiddenWord[rand() % 79];
 }
 

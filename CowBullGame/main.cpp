@@ -113,7 +113,8 @@ void PrintGameSummary()
 	}
 	else // Assumes if game is not won then user has ran out of turns
 	{ 
-		std::cout << "Out of turns, better luck next time!\n\n"; 
+		std::cout << "Out of turns, better luck next time!\n"; 
+		std::cout << "The hidden word was: " << BCGame.GetHiddenWord() << "\n\n";
 	} 
 	return;
 }
