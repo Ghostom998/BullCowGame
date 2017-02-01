@@ -30,11 +30,9 @@ int32 FBullCowGame::GetMaxTries() const
 
 void FBullCowGame::Reset()
 {
-	MyMaxTries = GetMaxTries();
-
 	MyHiddenWord = GetHiddenWord();
 	bGameIsWon = false;
-
+	MyMaxTries = GetMaxTries();
 	MyCurrentTry = 1;
 	return;
 }
