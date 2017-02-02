@@ -1,12 +1,9 @@
-#pragma once
-#include "stdafx.h"
 #include "FBullCowGame.h"
-#include <string>
 #include <iostream>
 #include <map>
-#include<ctime>
-#define TMap std::map
+#include <ctime>
 
+#define TMap std::map
 using int32 = int;
 
 FBullCowGame::FBullCowGame() // Default Constructor
@@ -22,15 +19,15 @@ bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 // Functional Class Methods
 
-int32 FBullCowGame::GetMaxTries() const 
-{ 
+int32 FBullCowGame::GetMaxTries() const
+{
 	TMap<int32, int32> WordLengthToMaxTries{ {3,4},{4,7},{5,10},{6,15},{7,20} };
-	return WordLengthToMaxTries[MyHiddenWord.length()]; 
+	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
 void FBullCowGame::Reset()
 {
-	MyHiddenWord = GetHiddenWord();	
+	MyHiddenWord = GetHiddenWord();
 	MyMaxTries = GetMaxTries();
 	bGameIsWon = false;
 	MyMaxTries = GetMaxTries();
@@ -96,7 +93,7 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 
 bool FBullCowGame::bIsIsogram(FString Word) const
 {
-	if (Word.length() <= 1) { return true; } // sorter considers 0 and 1 letter words to be isograms as the letters 
+	if (Word.length() <= 1) { return true; } // sorter considers 0 and 1 letter words to be isograms as the letters
 						 // obviosuly do not repeat and instead a more meaningful error is given (see CheckGuessValidity() )
 	TMap<char, bool> LetterSeen; // Setup map
 	for (auto Letter : Word)	// For all letters of the word
@@ -117,15 +114,14 @@ bool FBullCowGame::bIsLowerCase(FString Word) const
 
 FString FBullCowGame::GetHiddenWord() const
 {
-	std::string HiddenWord[] = { "bird" , "fake" , "frog" , "jump" , "shop" , "bike" , "mask" , "open" , "best" , "bank" , "nail" , "cafe" , "wide" , "star" , "game" , 
-		"code" , "boat" , "join" , "view" , "bang" , "dirty" , "chair" , "coral" , "money" , "heart" , "value" , "pound" , "store" , "house" , "pasty" , "party" , "dream" , 
+	std::string HiddenWord[] = { "bird" , "fake" , "frog" , "jump" , "shop" , "bike" , "mask" , "open" , "best" , "bank" , "nail" , "cafe" , "wide" , "star" , "game" ,
+		"code" , "boat" , "join" , "view" , "bang" , "dirty" , "chair" , "coral" , "money" , "heart" , "value" , "pound" , "store" , "house" , "pasty" , "party" , "dream" ,
 		"craft" , "sound" , "boxer" , "junky" , "cigar" , "swear" , "vault" , "after" , "forest" , "bounce" , "donkey" , "planet" , "crusty" , "gamble" , "bucket" ,
-		"tailor" , "castle" , "market" , "retail" , "chunky" , "switch" , "fabric" , "jumble" , "jacked" , "quiche" , "plaque" , "hangers" , "jukebox" , "mugshot" , 
-		"parcels" , "subject" , "qualify" , "equably" , "curtain" , "outpace" , "society" , "travel" , "squeaky" , "jerking" , "jumping" , "closure" , "jackets" ,  
+		"tailor" , "castle" , "market" , "retail" , "chunky" , "switch" , "fabric" , "jumble" , "jacked" , "quiche" , "plaque" , "hangers" , "jukebox" , "mugshot" ,
+		"parcels" , "subject" , "qualify" , "equably" , "curtain" , "outpace" , "society" , "travel" , "squeaky" , "jerking" , "jumping" , "closure" , "jackets" ,
 		"squelch" , "zombies" , "planted" };
 
 	srand(time(0));
 
 	return HiddenWord[rand() % 77];
 }
-
